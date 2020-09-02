@@ -118,7 +118,7 @@ FROM customers
 WHERE UPPER(contact_title) like '%MARKET%'
 ```
 
-* [ ] ***add a customer record for***
+* [x] ***add a customer record for***
 * customer id is 'SHIRE'
 * company name is 'The Shire'
 * contact name is 'Bilbo Baggins'
@@ -132,10 +132,12 @@ WHERE UPPER(contact_title) like '%MARKET%'
   </details>
 
 ```SQL
+INSERT INTO customers(customer_id, company_name, contact_name, address, city, postal_code, country)
+VALUES('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit Hole', 'Bag End', '111', 'Middle Earth')
 
 ```
 
-* [ ] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
+* [x] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
 
   <details><summary>hint</summary>
 
@@ -143,7 +145,9 @@ WHERE UPPER(contact_title) like '%MARKET%'
   </details>
 
 ```SQL
-
+UPDATE customers
+SET postal_code = '11122'
+WHERE customer_id = 'SHIRE'
 ```
 
 * [ ] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
