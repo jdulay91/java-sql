@@ -150,7 +150,7 @@ SET postal_code = '11122'
 WHERE customer_id = 'SHIRE'
 ```
 
-* [ ] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
+* [x] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
 
   <details><summary>hint</summary>
 
@@ -159,10 +159,14 @@ WHERE customer_id = 'SHIRE'
   </details>
 
 ```SQL
-
+SELECT c.company_name, COUNT(o.order_date)
+FROM customers c JOIN orders o
+on c.customer_id = o.customer_id
+GROUP BY c.company_name
+ORDER By company_name
 ```
 
-* [ ] ***list customers by contact name and the number of orders per contact name. Sort the list by the number of orders in descending order. _Jose Pavarotti_ should be at the top with 31 orders followed by _Roland Mendal_ with 30 orders. Last should be _Francisco Chang_ with 1 order***
+* [x] ***list customers by contact name and the number of orders per contact name. Sort the list by the number of orders in descending order. _Jose Pavarotti_ should be at the top with 31 orders followed by _Roland Mendal_ with 30 orders. Last should be _Francisco Chang_ with 1 order***
 
   <details><summary>hint</summary>
 
@@ -170,10 +174,14 @@ WHERE customer_id = 'SHIRE'
   </details>
 
 ```SQL
-
+SELECT c.contact_name, COUNT(o.order_date) as totalOrders
+FROM customers c JOIN orders o
+on c.customer_id = o.customer_id
+GROUP BY contact_name
+ORDER BY totalOrders DESC
 ```
 
-* [ ] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
+* [x] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
 
   <details><summary>hint</summary>
 
@@ -181,7 +189,11 @@ WHERE customer_id = 'SHIRE'
   </details>
 
 ```SQL
-
+SELECT c.city, COUNT(o.order_date) as totalOrders
+FROM customers c JOIN orders o
+on c.customer_id = o.customer_id
+GROUP BY c.city
+ORDER BY totalOrders DESC
 ```
 
 ## Data Normalization
